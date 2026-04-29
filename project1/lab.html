@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLOWER SHOP</title>
+    <style>
+        :root {
+            --primary-color: #aa00ff;
+            --secondary-color: #f4f4f4;
+            --accent-color: #ffd700;
+            --text-dark: #797474;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .cart-icon {
+            cursor: pointer;
+            position: relative;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .cart-icon:hover { background: rgba(255,255,255,0.3); }
+
+        #cart-count {
+            background: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+
+         البانر 
+        .hero-section {
+            background: linear-gradient(45deg, #aa00ff, #7a00b5);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            color: white;
+            font-size: 44px;
+            font-weight: 700px;
+            transition: all 0.5s ease-in-out;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.712);
+        }
+
+#bg-video {
+
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:100% ;
+    height: 94%;
+   transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -1;
+}
+
+
+.p .hero-section {
+    position: relative;
+    z-index: 1 ;
+}
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 40px 5%;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+            border: none;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img-wrapper {
+            overflow: hidden;
+            height: 250px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-img-wrapper:hover .product-img {
+            transform: scale(1.1);
+        }
+
+        .product-img-wrapper::after {
+            content: "عرض التفاصيل";
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            background: rgba(170, 0, 255, 0.7);
+            color: white;
+            padding: 10px 0;
+            transform: translateY(100%);
+            transition: 0.3s;
+        }
+
+        .product-img-wrapper:hover::after {
+            transform: translateY(0);
+        }
+
+        .card h3 { margin: 15px 0 5px; }
+        .card p { color: #666; font-weight: bold; margin-bottom: 15px; }
+
+        .card button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            cursor: pointer;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .card button:hover {
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        
+        footer {
+            background-color: #7e5c8c;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .payment-methods { margin-bottom: 15px; color: var(--accent-color); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><h1>FLEURS 🌸</h1></div>
+        <div class="cart-icon" onclick="showCart()">
+            🛒 السلة <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <div class="hero-section" id="slider">
+        <video autoplay muted loop playsinline id="bg-video">
+        <source src="video.mp4" type="video/mp4"></video>
+        <p id="slider-text"> Welcome to the world of flowers </p>
+
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="product-img-wrapper" onclick="goToProduct('أبيض', 'أزهار بيضاء نقية ترمز للسلام والصفاء و أضف لمسة من الأناقة لأي مكان.تحتاج نبتة الأوركيد إلى ضوء غير مباشر وتتميز بزهورها طويلة الأمد.')">
+                <img src="https://images.pexels.com/photos/11631444/pexels-photo-11631444.jpeg" alt="White Flower" class="product-img">
+            </div>
+            <h3>أوركيدأبيض ملكي</h3>
+            <p>price: 50 JOD</p>
+            <button onclick="addToCart('أوركيد أبيض ملكي', 50)">Add to cart</button>
+            
+        </div>
+
+        <div class="card">
+            <div class="product-img-wrapper" onclick="goToProduct('بنفسجي', 'أزهار أرجوانية ساحرة تعطي لمسة من الفخامة و أضف لمسة من الأناقة لأي مكان.تحتاج نبتة الأوركيد إلى ضوء غير مباشر وتتميز بزهورها طويلة الأمد.')">
+                <img src="https://images.pexels.com/photos/36676290/pexels-photo-36676290.jpeg" alt="Purple Flower" class="product-img">
+            </div>
+            <h3>أوركيد بنفسجي</h3>
+            <p>price: 60 JOD</p>
+            <button onclick="addToCart('أوركيد بنفسجي', 60)">Add to cart</button>
+            
+        </div>
+
+        <div class="card">
+            <div class="product-img-wrapper" onclick="goToProduct('باقة ورد', 'باقة وردية رقيقة مثالية للهدايا الرومانسية.')">
+                <img src="https://cdn.igp.com/f_auto,q_auto,t_prodl/products/p-opulent-orchids-bouquet-109604-m.jpg" class="product-img">
+            </div>
+            <h3>باقة ورد من أوركيد</h3>
+            <p>price: 85 JOD</p>
+            <button onclick="addToCart('باقة ورد من أوركيد ', 85)">Add to cart</button>
+            
+        </div>
+    </div>
+    
+ 
+<div id="details-section" style="display:none; background:white; margin:20px 5%; padding:30px; border-radius:15px; text-align:center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <h2 id="product-name" style="color: var(--primary-color);"></h2>
+    <p id="product-description" style="font-size: 18px; line-height: 1.6;"></p>
+    <button onclick="document.getElementById('details-section').style.display='none'" style="background:#333; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">إغلاق التفاصيل</button>
+</div>
+    <footer>
+        <div class="payment-methods">وسائل الدفع الآمنة: Visa | MasterCard | Cash</div>
+        <div class="copyright">© جميع الحقوق محفوظة لمتجر FLOWER SHOP 2026</div>
+        <div class="contact-info">
+        <div class="contact-item">
+            <a href="tel:+962700000000">📞 0791905898</a>
+        </div>
+        <div class="contact-item">
+            <a href="mailto:info@flowershop.com">📧 info@flowershop.com</a>
+        </div>
+    </div>
+    </footer>
+
+    <script>
+        //  السلة
+        let cart = [];
+    
+        function addToCart(name, price) {
+            cart.push({name :name, price :price});
+            cart.length;
+            document.getElementById('cart-count').innerText = cart.length;
+            alert(" تم إضافة" + name +" إلى السلة!");
+        }
+
+        function showCart() {
+            if(cart.length === 0) {
+                alert("السلة فارغة حالياً.");
+            } else {
+           let list = cart
+    .map((item, i) => ` ${i + 1}. ${item.name} — ${item.price} JOD`)
+    .join('\n');
+
+  // حساب  
+  const total = cart.reduce((sum, item) => sum + Number(item.price), 0);
+
+  alert(`محتويات السلة:\n${list}\n\nالمجموع الكلي: ${total} JOD`);
+                  
+            }
+  
+        }
+
+function goToProduct(name, description) {
+    const section = document.getElementById('details-section');
+    const nameElement = document.getElementById('product-name');
+    const descElement = document.getElementById('product-description');
+    nameElement.innerText = name;
+    descElement.innerText = description;
+    
+    section.style.display = 'block';
+    section.scrollIntoView({ behavior: 'smooth' });
+}
+       //  البانر المتغير
+        const messages = [ "تشكيلة جديدة من أزهار الربيع", "شحن مجاني للطلبات فوق 150 دينار"];
+        let index = 0;
+        const sliderText = document.getElementById('slider-text');
+
+if (sliderText) {
+  sliderText.style.color = '#111';
+  sliderText.style.fontWeight = '800';
+}
+
+        setInterval(() => {
+            index = (index + 1) % messages.length;
+            sliderText.style.opacity = 0;
+            setTimeout(() => {
+                sliderText.innerText = messages[index];
+                sliderText.style.opacity = 1;
+            }, 500);
+        }, 4000);
+    </script>
+
+</body>
+</html>
